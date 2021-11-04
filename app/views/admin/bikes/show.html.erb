@@ -1,2 +1,36 @@
-<h1>Admin::Bikes#show</h1>
-<p>Find me in app/views/admin/bikes/show.html.erb</p>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <%= attachment_image_tag @bike, :image, size: "300x250", fallback: "no_image.jpeg" %>
+    </div>
+    <div class="col-lg-4">
+      <h3><%= @bike.name %></h3>
+      <p>メーカー名：
+        <%= @bike.company.name %>
+      </p>
+      <p>排気量：
+        <%= @bike.cc.digit %>
+      </p>
+      <!--div class="average-review-rating" data-score=<1%= @bike.posts.average(:rate) %>></div>
+      <script>
+        $('.average-review-rating').raty({
+          readOnly: true,
+          starOn: "<!%= asset_path('star-on.png') %>",
+          starOff: "<!%= asset_path('star-off.png') %>",
+          starHalf: "<!%= asset_path('star-half.png') %>",
+          score: function() {
+            return $(this).attr('data-score')
+          }
+        });
+      </script-->
+      <div class="text-right">
+        <%= link_to '編集', edit_admin_bike_path(@bike), class:"btn btn-sm btn-success", method: :get %>
+        <%= link_to '削除', admin_bike_path(@bike), class:"btn btn-sm btn-danger", method: :delete, data: { confirm: '本当に削除しますか？' } %>
+      </div>
+    </div>
+
+    </div>
+  </div>
+</div>

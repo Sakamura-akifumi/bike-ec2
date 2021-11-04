@@ -4,12 +4,40 @@
     <title>BIKE</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class = "fixed">
+      <div class="site-header fixed-top">
+        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-dark shadow-sm">
+          <!--h5 class="my-0 mr-md-auto font-weight-normal"><a class="navbar-brand" href="/"><!--%= image_tag 'img/logo.png', :size => '220x60' %></a></h5-->
+          <dl class="searchbox pt-3 pr-3">
+             <!--%= render 'public/searches/form' %-->
+          </dl>
+          <%= render "layouts/header" %>
+        </div>
+      </div>
+      <main>
+        <%= yield %>
+      </main>
+      <footer class = "bottom">
+        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-dark shadow-sm">
+          <div class="row col-md-12">
+            <% if user_signed_in? %>
+              <div class="col-md-6 col-sm-6 mx-auto text-center">
+                <p class="text-white text-center">@CopyRight: FavoriteGolfCourse.inc</p>
+              </div>
+            <% else %>
+              <div class="col-md-7 col-sm-7 text-right">
+                <p class="text-white text-right">@CopyRight: FavoriteGolfCourse.inc</p>
+              </div>
+              <div class="admin-login col-md-5 col-sm-5 text-right"><%= link_to "管理者ログイン", new_admin_session_path, class:"btn btn-outline-light" %></div>
+            <% end %>
+          </div>
+        </div>
+      </footer>
+     </div>
   </body>
 </html>

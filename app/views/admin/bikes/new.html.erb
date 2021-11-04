@@ -1,2 +1,26 @@
-<h1>Admin::Bikes#new</h1>
-<p>Find me in app/views/admin/bikes/new.html.erb</p>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<div class="container">
+  <div class="row1">
+    <h2 class="index-title">バイク新規登録</h2><br>
+    <%= form_with model: @bike, url: admin_bikes_path, local:true do |f| %>
+      <div class="form-group">
+        <%= f.attachment_field :image, placeholder: "バイク画像" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :name, 'バイク名' %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :company_id, 'メーカー名' %>
+        <%= f.collection_select(:company_id, Company.all, :id, :name) %>
+      </div>
+      <div class="form-group">
+        <%= f.label :cc_id, '排気量' %>
+        <%= f.collection_select(:cc_id, Cc.all, :id, :digit) %>
+      </div>
+      <div class="form-group">
+        <%= f.submit 'バイク登録', class: 'btn btn-primary btn-block' %>
+      </div>
+    <% end %>
+  </div>
