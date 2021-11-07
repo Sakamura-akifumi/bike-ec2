@@ -1,2 +1,10 @@
-<h1>User::Users#show</h1>
-<p>Find me in app/views/user/users/show.html.erb</p>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<div class = "container">
+  <div class="row">
+    <div class="user-info col-lg-12">
+      <%= render 'user/users/user', user: @user %>
+    </div>
+  </div>
+  <!--%= render "user/users/tab", posts: @posts, like_list: @like_list, user: @user, like_lists: @like_lists %-->
+</div>

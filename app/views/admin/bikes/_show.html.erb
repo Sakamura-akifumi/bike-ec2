@@ -1,0 +1,42 @@
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+    <%= attachment_image_tag bike, :image, size: "350x250", fallback: "no_image.jpeg" %>
+    </div>
+    <div class="col-lg-4">
+      <p class="p-2">メーカー名：
+        <%= @bike.company.name %>
+      </p>
+      <p class="p-2">排気量：
+        <%= @bike.cc.digit %>
+      </p>
+      <div class="average-score d-flex pl-2">
+        <div class="average-review-rating" data-score=<%= bike.posts.average(:rate) %>></div>
+        <h4 class="average-score-display pl-3 ">
+          <strong><%= bike.avg_score %></strong>
+        </h4>
+        <div class="post-count pt-1 pl-2">（<%= bike.posts.count %>件）</div>
+      </div>
+      <% if user_signed_in? %>
+        <div class="like-<%= bike.id %> m-4">
+          <%= render 'admin/likes/like', bike: bike %>
+        </div>
+      <% else %>
+        <div></div>
+      <% end %>
+      <script>
+        $('.average-review-rating').raty({
+          readOnly: true,
+          starOn: "<%= asset_path('star-on.jpeg') %>",
+          starOff: "<%= asset_path('star-off.jpeg') %>",
+          starHalf: "<%= asset_path('star-half.jpeg') %>",
+          score: function() {
+            return $(this).attr('data-score')
+          }
+        });
+      </script>
+    </div>
+  </div>
+</div>

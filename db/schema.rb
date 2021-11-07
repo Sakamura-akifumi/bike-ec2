@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2021_11_04_050119) do
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "post_id"
+    t.integer "bike_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -68,6 +69,7 @@ ActiveRecord::Schema.define(version: 2021_11_04_050119) do
     t.float "rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "bike_id"
   end
 
   create_table "rankings", force: :cascade do |t|
@@ -86,6 +88,7 @@ ActiveRecord::Schema.define(version: 2021_11_04_050119) do
     t.string "name"
     t.string "name_id"
     t.text "introduction"
+    t.string "profile_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

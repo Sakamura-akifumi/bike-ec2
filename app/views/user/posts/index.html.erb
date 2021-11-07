@@ -1,2 +1,74 @@
-<h1>User::Posts#index</h1>
-<p>Find me in app/views/user/posts/index.html.erb</p>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<div class="container">
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col-lg-1 col-sm-2 posts-user">
+        <%= link_to user_users_path(post.user) do %>
+            <%= attachment_image_tag post.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size:"70x70" %>
+        <% end %><br>
+        <span><%= post.user.name %></span>
+      </div>
+      <div class="col-lg-4 col-sm-3 mb-3">
+        <div class="posts-content">
+          <p><%= post.created_at.strftime('%Y/%m/%d %H:%M')  %></p>
+          <h5 class="mb-3">
+            評価：<%= post.rate %>点|<%= post.title %>
+          </h5>
+          <p><%= post.content %></p>
+          <span class="sentiment-score">口コミ内容の感情分析スコア：<%= post.score %>点</span><br>
+          <% if post.user == current_user %>
+            <%= link_to edit_user_post_path(post), class:"btn btn-sm btn-success", method: :get do %>
+              レビューを編集
+            <% end %>
+            <%= link_to user_post_path(post.golf_course_id), class:"btn btn-sm btn-danger", method: :delete, data: { confirm: '本当に削除しますか？' } do %>
+              レビューを削除
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-3">
+        <%= link_to user_user_bike_path(post.bike.id) do %>
+          <%= attachment_image_tag post.bike, :image, fallback: "no_image.jpeg", size: "180x120", class: "button grow"%>
+        <% end %>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+        <h5>
+          <strong>
+            <%= link_to user_user_bike_path(post.bike.id) do %>
+              <%= post.bike.name %>
+            <% end %>
+          </strong>
+        </h5>
+        <%= post.bike.company.name %>
+        <%= post.bike.digit %>
+        <div class="average-score d-flex p-2">
+          <div class="average-review-rating" data-score=<%= post.bike.posts.average(:rate) %>></div>
+          <h4 class="average-score-display pl-3 ">
+            <strong><%= post.bike.avg_score %></strong>
+          </h4>
+          <div class="post-count pt-1 pl-2">（<%= post.bike.posts.count %>件）</div>
+        </div>
+        <!--<div class="like-<!%= post.bike.id %> m-4">-->
+          <%#= render 'admin/likes/like', golf_course: golf_course %>
+        <!--</div>-->
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <p class="text-center">
+      <%= paginate @posts %>
+    </p>
+  </div>
+</div>
+<script>
+    $('.average-review-rating').raty({
+      readOnly: true,
+      starOn: "<%= asset_path('star-on.jpeg') %>",
+      starOff: "<%= asset_path('star-off.jpeg') %>",
+      starHalf: "<%= asset_path('star-half.jpeg') %>",
+      score: function() {
+        return $(this).attr('data-score')
+      }
+    });
+  </script>

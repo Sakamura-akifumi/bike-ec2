@@ -35,5 +35,4 @@ class User::PostsControllerTest < ActionDispatch::IntegrationTest
     get user_posts_destroy_url
     assert_response :success
   end
-
 end

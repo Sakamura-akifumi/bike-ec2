@@ -2,52 +2,50 @@
 <p class="alert"><%= alert %></p>
 <div class="container">
   <div class="row">
-    <div class="col-lg-5 col-sm-6">
+    <div class="col-lg-5">
       <h2 class="index-title">バイク一覧</h2>
-      <p>(全<%= @bikes.count %>件)</p>
+      <p>(全<%= bikes.count %>件)</p>
     </div>
-    <div class="col-lg-4 col-sm-3 text-right">
+    <div class="col-lg-4 text-right">
       <div class="btn-group dropright">
         <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           メーカーで絞る
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <% @companies.each do |company| %>
-          　<%= link_to company.name, admin_bikes_path(company_id: company.id), class: "dropdown-item" %>
+          <% companies.each do |company| %>
+          　<%= link_to company.name, user_bikes_path(company_id: company.id), class: "dropdown-item" %>
           <% end %>
         </div>
       </div>
     </div>
-    <div class="col-lg-3 col-sm-3">
+    <div class="col-lg-3">
       <div class="btn-group dropright">
         <button class="btn btn-outline-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           排気量で絞る
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <% @ccs.each do |cc| %>
-          　<%= link_to cc.digit, admin_bikes_path(cc_id: cc.id), class: "dropdown-item" %>
+          <% ccs.each do |cc| %>
+          　<%= link_to cc.digit, user_bikes_path(cc_id: cc.id), class: "dropdown-item" %>
           <% end %>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
-    <% @bikes.each do |bike| %>
-      <div class="col-lg-3 col-sm-4">
-        <%= link_to admin_bike_path(bike.id) do %>
+    <% bikes.each do |bike| %>
+      <div class="col-lg-3 flex p-2">
+        <%= link_to user_bike_path(bike.id) do %>
           <%= attachment_image_tag bike, :image, size: "200x150", fallback: "no_image.jpeg", class: "button grow" %><br>
         <% end %>
         <strong>
-          <%= link_to admin_bike_path(bike.id) do %>
+          <%= link_to user_bike_path(bike.id) do %>
             <%= bike.name %>
           <% end %>
-        </strong><br>
-          <%= bike.company_id %>
-          <%= bike.cc.digit %>
-      </p>
+          </strong><br>
+        <%= bike.company.name %>
+        <%= bike.cc.digit %>
       </div>
     <% end %>
   </div>
-</div>
 
 <div class= "paginate col-lg-3 mx-auto"><%= paginate @bikes %></div>

@@ -10,5 +10,4 @@ class User::BikesControllerTest < ActionDispatch::IntegrationTest
     get user_bikes_show_url
     assert_response :success
   end
-
 end

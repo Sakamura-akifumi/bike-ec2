@@ -1,7 +1,6 @@
 class CreatePosts < ActiveRecord::Migration[5.2]
   def change
     create_table :posts do |t|
-
       t.integer :user_id
       t.string :bike_name
       t.text :content
@@ -9,6 +8,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.float :rate
       t.timestamp :created_at
       t.timestamp :updated_at
+      t.integer :bike_id
 
       t.timestamps
     end

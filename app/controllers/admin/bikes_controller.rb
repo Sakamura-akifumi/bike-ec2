@@ -1,21 +1,21 @@
 class Admin::BikesController < ApplicationController
   before_action :authenticate_admin!, only: [:create, :edit, :update, :index, :show, :new]
 
-
   def new
     @bike = Bike.new
   end
 
   def index
-    if params[:region_id].present? # メーカーで絞った時
-      @bike = Bike.where(company_id: params[:company_id]).page(params[:page]).per(8)
+    if params[:company_id].present? # メーカーで絞った時
+      @bikes = Bike.where(company_id: params[:company_id]).page(params[:page]).per(8)
     elsif params[:cc_id].present? # cc数で絞った時
-      @bike = Bike.where(cc_id: params[:cc_id]).page(params[:page]).per(8)
+      @bikes = Bike.where(cc_id: params[:cc_id]).page(params[:page]).per(8)
     else # それ以外の処理（ヘッダーからランキングページに遷移した時）
-      @bike = Bike.all.page(params[:page]).per(8)
+      @bikes = Bike.all.page(params[:page]).per(8)
     end
 
     @companies = Company.all
+    @ccs = Cc.all
   end
 
   def show
@@ -49,7 +49,7 @@ class Admin::BikesController < ApplicationController
   def destroy
     @bike = Bike.find(params[:id])
     if @bike.destroy
-      redirect_to admin_bike_path
+      redirect_to admin_bikes_path
     end
   end
 
@@ -58,5 +58,4 @@ class Admin::BikesController < ApplicationController
   def bike_params
     params.require(:bike).permit(:name, :image, :company_id, :cc_id)
   end
-
 end

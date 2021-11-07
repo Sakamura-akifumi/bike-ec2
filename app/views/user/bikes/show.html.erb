@@ -1,2 +1,18 @@
-<h1>User::Bikes#show</h1>
-<p>Find me in app/views/user/bikes/show.html.erb</p>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<div class="container">
+  <p></p>
+  <div class="row my-4">
+    <%= render 'admin/bikes/show', bike: @bike %>
+  </div>
+  <div class="row my-4">
+    <%= render 'user/posts/index', bike: @bike, posts: @posts %>
+  </div>
+  <div class="row my-4">
+    <% if user_signed_in? %>
+      <%= render 'user/posts/new', post: @post, bike: @bike %>
+    <% else %>
+      <%= link_to "レビューを投稿する", new_user_session_path, class: "btn btn-outline-success" %>
+    <% end %>
+  </div>
+</div>

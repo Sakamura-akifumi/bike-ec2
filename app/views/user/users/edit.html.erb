@@ -1,2 +1,44 @@
-<h1>User::Users#edit</h1>
-<p>Find me in app/views/user/users/edit.html.erb</p>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@user.errors.count, "error") %>
+      prohibited this book from being saved:
+    </h2>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 cpl-lg-5 px-5 px-sm-0 mx-auto">
+      <h2 class="mb-3">ユーザー情報</h2>
+      <%= form_with model:@user, url: user_user_path(@user), local:true do |f| %>
+        <div class="form-group">
+          <label for="user_name">名前</label><br>
+          <%= f.text_field :name, autofocus: true, class:"form-control" %>
+        </div>
+        <div class="form-group">
+          <label for="user_image">プロフィール画像</label><br>
+          <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+        </div>
+        <div class="form-group">
+          <label for="user_introduction">自己紹介</label><br>
+          <%= f.text_area :introduction, class:"form-control" %>
+        </div>
+        <div class="form-group row justify-content-end">
+          <div class="col-md-6 text-right">
+            <%= f.submit '更新', class:"btn btn-success" %>
+          </div>
+          <div class="col-md-6">
+            <%= link_to "戻る", :back, class:"btn btn-outline-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

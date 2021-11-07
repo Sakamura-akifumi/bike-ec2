@@ -10,5 +10,4 @@ class User::RankingsControllerTest < ActionDispatch::IntegrationTest
     get user_rankings_show_url
     assert_response :success
   end
-
 end

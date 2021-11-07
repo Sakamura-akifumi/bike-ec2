@@ -3,9 +3,9 @@
   <nav class="my-2 my-md-0 mr-md-3">
     <a><%= link_to "マイページ", user_user_path(current_user.id), class: "btn btn-outline-light" %></a>
     <a><%= link_to "ランキング", user_rankings_path, class: "btn btn-outline-light" %></a>
-    <a><!--%= link_to "バイク一覧", user_bikes_path, class: "btn btn-outline-light" %--></a>
+    <a><%= link_to "バイク一覧", user_bikes_path, class: "btn btn-outline-light" %></a>
     <a><%= link_to "レビュー", user_posts_path, class: "btn btn-outline-light" %></a>
-    <a><!--%= link_to "ユーザー一覧", user_users_path, class: "fas fa-users p-2 text-white" %--></a>
+    <a><%= link_to "ユーザー一覧", user_users_path, class: "btn btn-outline-light" %></a>
   </nav>
   <a><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-light" %></a>
 
@@ -16,7 +16,7 @@
     <a><%= link_to "ランキング", user_rankings_path, class: "btn btn-outline-light" %></a>
     <a><%= link_to "バイク一覧", admin_bikes_path, class: "btn btn-outline-light" %></a>
     <a><%= link_to "レビュー", user_posts_path, class: "btn btn-outline-light" %></a>
-    <a><!--%= link_to "ユーザー一覧", user_users_path, class: "btn btn-outline-light" %--></a>
+    <a><%= link_to "ユーザー一覧", user_users_path, class: "btn btn-outline-light" %></a>
   </nav>
   <a><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-light" %></a>
 
@@ -24,7 +24,7 @@
 <!--ログインしていない時-->
   <nav class="my-2 my-md-0 mr-md-3">
     <a><%= link_to "ランキング", user_rankings_path, class: "btn btn-outline-light" %></a>
-    <a><!--%= link_to "バイク一覧", user_bikes_path, class: "btn btn-outline-light" %--></a>
+    <a><%= link_to "バイク一覧", user_bikes_path, class: "btn btn-outline-light" %></a>
   </nav>
   <a><%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-light" %></a>
   <a><%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-light mx-2" %></a>

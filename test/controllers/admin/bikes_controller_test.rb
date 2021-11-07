@@ -35,5 +35,4 @@ class Admin::BikesControllerTest < ActionDispatch::IntegrationTest
     get admin_bikes_destroy_url
     assert_response :success
   end
-
 end

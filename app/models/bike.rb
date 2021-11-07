@@ -1,5 +1,4 @@
 class Bike < ApplicationRecord
-
   attachment :image
 
   has_many :posts, dependent: :destroy
@@ -7,5 +6,4 @@ class Bike < ApplicationRecord
 
   belongs_to :company
   belongs_to :cc
-
 end
