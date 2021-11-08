@@ -29,7 +29,6 @@ class User::PostsController < ApplicationController
     @post.bike_id = params[:bike_id]
     @post.score = Language.get_data(post_params[:content])
     if @post.save!
-      redirect_to user_bike_path(@post.bike_id)
     else
       flash.now[:warning] = "入力不備があります"
       render :new
@@ -43,7 +42,6 @@ class User::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
-      redirect_to user_bike_path(@post.bike_id)
     end
   end
 

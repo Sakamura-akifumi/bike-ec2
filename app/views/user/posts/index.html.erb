@@ -16,7 +16,7 @@
             評価：<%= post.rate %>点|<%= post.title %>
           </h5>
           <p><%= post.content %></p>
-          <span class="sentiment-score">口コミ内容の感情分析スコア：<%= post.score %>点</span><br>
+          <span class="sentiment-score">口コミ内容：<%= post.score %>点</span><br>
           <% if post.user == current_user %>
             <%= link_to edit_user_post_path(post), class:"btn btn-sm btn-success", method: :get do %>
               レビューを編集
@@ -49,9 +49,6 @@
           </h4>
           <div class="post-count pt-1 pl-2">（<%= post.bike.posts.count %>件）</div>
         </div>
-        <!--<div class="like-<!%= post.bike.id %> m-4">-->
-          <%#= render 'admin/likes/like', golf_course: golf_course %>
-        <!--</div>-->
       </div>
     <% end %>
   </div>

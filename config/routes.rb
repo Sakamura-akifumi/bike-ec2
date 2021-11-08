@@ -18,10 +18,11 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update] do
       get :likes, on: :collection
     end
-    resources :bikes
+    resources :bikes, only: [:index, :show]
     resources :posts
     resources :comments, only: [:create, :destroy]
     resources :rankings, only: [:index, :show]
+    get 'search', to: 'searches#search'
   end
 
   namespace :admin do

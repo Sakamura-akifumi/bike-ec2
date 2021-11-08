@@ -7,7 +7,7 @@ class User::UsersController < ApplicationController
 
   def show
     @posts = Post.includes(:user, :bike).where(user_id: @user.id).order(created_at: :desc).page(params[:page]).per(6)
-    likes = Like.where(user_id: @user.id).pluck(:golf_course_id) #
+    likes = Like.where(user_id: @user.id).pluck(:bike_id) #
     @like_list = Bike.find(likes)
   end
 

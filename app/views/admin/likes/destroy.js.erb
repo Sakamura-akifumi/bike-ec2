@@ -1,0 +1,1 @@
+$(".like-"+<%= (@bike.id).to_s %>).html("<%= j(render partial: 'admin/likes/like', locals: { bike: @bike }) %>");

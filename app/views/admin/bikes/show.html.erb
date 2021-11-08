@@ -13,18 +13,18 @@
       <p>排気量：
         <%= @bike.cc.digit %>
       </p>
-      <!--div class="average-review-rating" data-score=<1%= @bike.posts.average(:rate) %>></div>
+      <div class="average-review-rating" data-score=<1%= @bike.posts.average(:rate) %></div>
       <script>
         $('.average-review-rating').raty({
           readOnly: true,
-          starOn: "<!%= asset_path('star-on.png') %>",
-          starOff: "<!%= asset_path('star-off.png') %>",
-          starHalf: "<!%= asset_path('star-half.png') %>",
+          starOn: "<!%= asset_path('star-on.jpeg') %>",
+          starOff: "<!%= asset_path('star-off.jpeg') %>",
+          starHalf: "<!%= asset_path('star-half.jpeg') %>",
           score: function() {
             return $(this).attr('data-score')
           }
         });
-      </script-->
+      </script>
       <div class="text-right">
         <%= link_to '編集', edit_admin_bike_path(@bike), class:"btn btn-sm btn-success", method: :get %>
         <%= link_to '削除', admin_bike_path(@bike), class:"btn btn-sm btn-danger", method: :delete, data: { confirm: '本当に削除しますか？' } %>
