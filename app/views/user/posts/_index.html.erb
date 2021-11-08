@@ -14,7 +14,6 @@
         </div>
       </h4>
       <p><%= post.content %></p>
-      <span class="sentiment-score">口コミ内容スコア：<%= post.score %>点</span>
     </div>
   </div>
   <div class="col-md-4 col-sm-4">
@@ -24,7 +23,7 @@
       <%= link_to edit_user_post_path(post), class:"btn btn-sm btn-success", method: :get do %>
         レビューを編集
       <% end %>
-      <%= link_to user_post_path(post), class:"btn btn-sm btn-danger", method: :delete, data: { confirm: '本当に削除しますか？' }, remote: true do %>
+      <%= link_to user_post_path(post), class:"btn btn-sm btn-danger", method: :delete, data: { confirm: '本当に削除しますか？' } do %>
         レビューを削除
       <% end %>
     <% end %>

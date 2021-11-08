@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2021_11_04_050119) do
   create_table "bikes", force: :cascade do |t|
     t.string "name"
     t.string "image_id"
+    t.text "content"
     t.integer "company_id"
     t.integer "cc_id"
     t.datetime "created_at", null: false
@@ -55,7 +56,6 @@ ActiveRecord::Schema.define(version: 2021_11_04_050119) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "post_id"
     t.integer "bike_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -63,13 +63,14 @@ ActiveRecord::Schema.define(version: 2021_11_04_050119) do
 
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
-    t.string "bike_name"
+    t.string "title"
     t.text "content"
     t.string "image_id"
     t.float "rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "bike_id"
+    t.decimal "score", precision: 5, scale: 3
   end
 
   create_table "rankings", force: :cascade do |t|

@@ -17,9 +17,9 @@
       <script>
         $('.average-review-rating').raty({
           readOnly: true,
-          starOn: "<!%= asset_path('star-on.jpeg') %>",
-          starOff: "<!%= asset_path('star-off.jpeg') %>",
-          starHalf: "<!%= asset_path('star-half.jpeg') %>",
+          starOn: "<%= asset_path('star-on.jpeg') %>",
+          starOff: "<%= asset_path('star-off.jpeg') %>",
+          starHalf: "<%= asset_path('star-half.jpeg') %>",
           score: function() {
             return $(this).attr('data-score')
           }

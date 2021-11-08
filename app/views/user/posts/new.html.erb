@@ -1,7 +1,7 @@
 <div class="col-lg-8">
   <h4><strong>レビューを投稿する</strong></h4><br>
   <div class="field">
-    <%= form_with model: @post, url: user_posts_path(bike_id: @bike.id) do |f| %>
+    <%= form_with model: @post, url: user_posts_path(bike_id: @bike.id), local:true do |f| %>
 
     <!-- タイトル -->
       <div class="form-group d-flex">

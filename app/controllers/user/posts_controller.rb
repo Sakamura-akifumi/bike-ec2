@@ -1,10 +1,6 @@
 class User::PostsController < ApplicationController
   before_action :set_post, only: [:destroy, :edit, :update]
 
-  def index
-    @posts = Post.all.order(created_at: :desc).page(params[:page]).per(6)
-  end
-
   def show
   end
 
@@ -27,8 +23,8 @@ class User::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     @post.bike_id = params[:bike_id]
-    @post.score = Language.get_data(post_params[:content])
     if @post.save!
+      redirect_to user_bike_path(@post.bike_id)
     else
       flash.now[:warning] = "入力不備があります"
       render :new
@@ -42,6 +38,7 @@ class User::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
+      redirect_to user_bike_path(@post.bike_id)
     end
   end
 
