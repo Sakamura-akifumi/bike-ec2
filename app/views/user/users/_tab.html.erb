@@ -8,7 +8,6 @@
         <a class="nav-link" id="like-tab" data-toggle="tab" href="#like" role="tab" aria-controls="like" aria-selected="false">お気に入り(<%= user.likes.count %>件)</a>
       </li>
     </ul>
-
     <!--口コミ一覧-->
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active my-2" id="post" role="tabpanel" aria-labelledby="post-tab">
@@ -54,14 +53,13 @@
         <% end %>
         <div class-"paginate"><%= paginate posts %></div>
       </div>
-
       <!--お気に入り一覧-->
       <div class="tab-pane fade" id="like" role="tabpanel" aria-labelledby="like-tab">
         <div class="d-flex my-2">
           <% if like_list.present? %>
             <% like_list.each do |bike| %>
               <div class="col-lg-4 col-sm-5 d-flex">
-                <div class="like-bike">
+                <div class="like-golf">
                   <div class="course-header mx-auto">
                     <%= link_to user_bike_path(bike.id) do %>
                       <%= attachment_image_tag bike, :image, size: "180x120", fallback: "no_image.jpeg", class:"button grow" %><br>

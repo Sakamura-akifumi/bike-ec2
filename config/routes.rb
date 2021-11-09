@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   namespace :user, path: "" do
     resources :users, only: [:index, :show, :edit, :update] do
-      get :likes, on: :collection
+    resources :likes, on: :collection
     end
     resources :bikes, only: [:index, :show]
     resources :posts
