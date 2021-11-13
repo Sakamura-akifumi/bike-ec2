@@ -9,7 +9,6 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.timestamp :created_at
       t.timestamp :updated_at
       t.integer :bike_id
-      t.decimal :score, precision: 5, scale: 3
 
       t.timestamps
     end

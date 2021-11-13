@@ -77,6 +77,8 @@ gem 'ransack'
 
 gem 'rubocop-airbnb'
 
+gem 'pry-byebug', group: :development
+
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'

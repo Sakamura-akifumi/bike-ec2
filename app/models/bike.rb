@@ -3,7 +3,6 @@ class Bike < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :users, dependent: :destroy
 
   belongs_to :company
   belongs_to :cc
