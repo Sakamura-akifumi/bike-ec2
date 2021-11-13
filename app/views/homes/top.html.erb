@@ -35,11 +35,15 @@
       <div class="col-lg-4 col-sm-4 feature text-center">
         <span aria-hidden="true" class="glyphicon glyphicon-check" style="font-size: 40px"></span>
         <i class="far fa-image" style="font-size: 40px"></i>
-        <h3 class="feature-title" style="font-size: 20px"><strong>メーカー一覧</strong></h3>
+        <h3 class="feature-title" style="font-size: 20px"><strong>メーカー一覧</strong></h3>・・
         <a><%= link_to 'Honda', 'https://www.honda.co.jp/' %></a>
         <a><%= link_to 'SUZUKI', 'https://www.suzuki.co.jp/' %></a><br>
-        <%= link_to image_tag("kmj_logo3_s", class: "image"), 'https://www.kawasaki-motors.com/' %><br>
-        <%= link_to image_tag("yamahamotor_bnr_small", class: "image"), 'https://global.yamaha-motor.com/jp/' %>
+        <%= link_to 'https://www.kawasaki-motors.com/' do %>
+          <%= image_tag 'kmj_logo3_s.jpg' %>
+        <% end %><br>
+        <%= link_to 'https://global.yamaha-motor.com/jp/' do %>
+          <%= image_tag 'yamahamotor_bnr_small.jpg' %>
+        <% end %><br>
       </div>
     </div>
   </div>
