@@ -77,7 +77,11 @@ gem 'ransack'
 
 gem 'rubocop-airbnb'
 
-gem 'pry-byebug', group: :development
+group :development, :test do
+
+  gem 'pry-byebug'
+
+end
 
 gem 'dotenv-rails'
 group :production do
