@@ -23,11 +23,11 @@ class User::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     @post.bike_id = params[:bike_id]
-    if @post.save!
+    if @post.save
       redirect_to user_bike_path(@post.bike_id)
     else
       flash.now[:warning] = "入力不備があります"
-      render :new
+      render :"new"
     end
   end
 
