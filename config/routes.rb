@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
 
   devise_for :admins, controllers: {
     sessions: 'admin/sessions',
