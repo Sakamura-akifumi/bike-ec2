@@ -6,30 +6,6 @@
       <h2 class="index-title">バイクランキング</h2>
       <p>(全<%= @bikes.count %>件)</p>
     </div>
-    <div class="col-lg-4 col-sm-3 text-right">
-      <div class="btn-group dropright">
-        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          メーカーで絞る
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <% @companies.each do |company| %>
-          　<%= link_to company.name, user_rankings_path(company_id: company.id), class: "dropdown-item" %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-sm-3">
-      <div class="btn-group dropright">
-        <button class="btn btn-outline-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          排気量で絞る
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <% @ccs.each do |cc| %>
-          　<%= link_to cc.digit, user_rankings_path(cc_id: cc.id), class: "dropdown-item" %>
-          <% end %>
-        </div>
-      </div>
-    </div>
   </div>
   <% rank = (params[:page].to_i - 1) * 8 %>
   <div class="row">
