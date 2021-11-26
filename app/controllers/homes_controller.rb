@@ -12,7 +12,7 @@ class HomesController < ApplicationController
                     group(:rate).
                     order(Arel.sql('avg(rate) desc')).
                     pluck(:bike_id))
-    @ccs = Cc.all
+
   end
 
   def guest_sign_in
