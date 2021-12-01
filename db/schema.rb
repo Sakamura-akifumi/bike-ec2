@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_01_044355) do
+ActiveRecord::Schema.define(version: 2021_12_01_061731) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -70,7 +70,6 @@ ActiveRecord::Schema.define(version: 2021_12_01_044355) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "bike_id"
-    t.decimal "score", precision: 5, scale: 3
   end
 
   create_table "rankings", force: :cascade do |t|
