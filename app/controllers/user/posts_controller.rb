@@ -23,6 +23,7 @@ class User::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     @post.bike_id = params[:bike_id]
+    @post.score = Language.get_data(post_params[:content])
     if @post.save
       redirect_to user_bike_path(@post.bike_id)
     else
